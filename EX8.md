@@ -60,5 +60,7 @@ COMMIT;
 ## OUTPUT:
 ```sql
 Msg 1205, Level 13, State 51, Line 3
-Transaction (Process ID) was deadlocked on resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Transaction (Process ID) was deadlocked
+on resourceswith anotherprocess and has been
+chosen as the deadlock victim. Rerun the transaction.
 ```
