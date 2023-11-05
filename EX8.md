@@ -14,7 +14,6 @@ To simulate a scenario of deadlock in concurrent execution of transactions.
 ```sql
 -- Creating Accounts table
 CREATE TABLE Accounts (account_id INT PRIMARY KEY,balance DECIMAL(10, 2));
-
 -- Inserting sample account data
 INSERT INTO Accounts VALUES(1, 1000.00);
 INSERT INTO Accounts VALUES(2, 2500.00);
@@ -26,35 +25,27 @@ INSERT INTO Accounts VALUES(2, 2500.00);
 ## Transaction T1
 ```sql
 BEGIN TRANSACTION;
-
 UPDATE Accounts
 SET balance = balance - 200.00
 WHERE account_id = 1;
-
 -- Simulate a delay to ensure T2 interferes
 WAITFOR DELAY '00:00:10'; -- This line introduces a delay
-
 UPDATE Accounts
 SET balance = balance + 200.00
 WHERE account_id = 2;
-
 COMMIT;
 ```
 ## Transaction T2
 ```sql
 BEGIN TRANSACTION;
-
 UPDATE Accounts
 SET balance = balance - 150.00
 WHERE account_id = 2;
-
 -- Simulate a delay to ensure T1 interferes
 WAITFOR DELAY '00:00:10'; -- This line introduces a delay
-
 UPDATE Accounts
 SET balance = balance + 150.00
 WHERE account_id = 1;
-
 COMMIT;
 ```
 ## OUTPUT:
@@ -64,3 +55,5 @@ Transaction (Process ID) was deadlocked
 on resourceswith anotherprocess and has been
 chosen as the deadlock victim. Rerun the transaction.
 ```
+## RESULT:
+Thus the program for the simulation of deadlock has been executed successfully.
